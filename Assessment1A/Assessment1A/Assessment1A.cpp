@@ -17,7 +17,7 @@ int main()
     obj_parse(MODEL_PATH.c_str(), &tris);
 
     render(tris);
-
+    // std::cout << "tris.size(): " << tris.size() << std::endl;
     savebitmap("render.bmp", colour_buffer, PIXEL_W, PIXEL_H);
 
     CounterEndAndPrint(Render_StartingTime, &Render_EndingTime, Frequency);

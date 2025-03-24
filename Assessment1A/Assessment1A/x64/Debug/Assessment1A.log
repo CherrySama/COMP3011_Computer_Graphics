@@ -1,15 +1,28 @@
 ﻿  Assessment1A.cpp
-C:\Users\pszks\Desktop\COMP3011\2024-25\Assessments\Assessment1A\Assessment1A\do_not_edit.h(83,36): warning C4267: 'argument': conversion from 'size_t' to '_Ty', possible loss of data
-          with
-          [
-              _Ty=unsigned int
-          ]
-C:\Users\pszks\Desktop\COMP3011\2024-25\Assessments\Assessment1A\Assessment1A\do_not_edit.h(140,9): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 2 has type 'unsigned __int64'
-C:\Users\pszks\Desktop\COMP3011\2024-25\Assessments\Assessment1A\Assessment1A\do_not_edit.h(140,9): message : consider using '%zd' in the format string
-C:\Users\pszks\Desktop\COMP3011\2024-25\Assessments\Assessment1A\Assessment1A\do_not_edit.h(194,87): warning C4244: '=': conversion from 'float' to 'char', possible loss of data
-C:\Users\pszks\Desktop\COMP3011\2024-25\Assessments\Assessment1A\Assessment1A\do_not_edit.h(195,87): warning C4244: '=': conversion from 'float' to 'char', possible loss of data
-C:\Users\pszks\Desktop\COMP3011\2024-25\Assessments\Assessment1A\Assessment1A\do_not_edit.h(196,87): warning C4244: '=': conversion from 'float' to 'char', possible loss of data
-C:\Users\pszks\Desktop\COMP3011\2024-25\Assessments\Assessment1A\Assessment1A\rasterise.h(38,13): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\pszks\Desktop\COMP3011\2024-25\Assessments\Assessment1A\Assessment1A\do_not_edit.h(243): warning C4715: 'savebitmap': not all control paths return a value
-C:\Users\pszks\Desktop\COMP3011\2024-25\Assessments\Assessment1A\Assessment1A\do_not_edit.h(142): warning C4715: 'obj_parse': not all control paths return a value
-  Assessment1A.vcxproj -> C:\Users\pszks\Desktop\COMP3011\2024-25\Assessments\Assessment1A\x64\Debug\Assessment1A.exe
+E:\myObj\COMP3011_Computer_Graphics\COMP3011_Computer_Graphics\Assessment1A\Assessment1A\do_not_edit.h(83,34): warning C4267: “参数”: 从“size_t”转换到“_Ty”，可能丢失数据
+E:\myObj\COMP3011_Computer_Graphics\COMP3011_Computer_Graphics\Assessment1A\Assessment1A\do_not_edit.h(83,34): warning C4267:         with
+E:\myObj\COMP3011_Computer_Graphics\COMP3011_Computer_Graphics\Assessment1A\Assessment1A\do_not_edit.h(83,34): warning C4267:         [
+E:\myObj\COMP3011_Computer_Graphics\COMP3011_Computer_Graphics\Assessment1A\Assessment1A\do_not_edit.h(83,34): warning C4267:             _Ty=unsigned int
+E:\myObj\COMP3011_Computer_Graphics\COMP3011_Computer_Graphics\Assessment1A\Assessment1A\do_not_edit.h(83,34): warning C4267:         ]
+  (编译源文件“Assessment1A.cpp”)
+  
+E:\myObj\COMP3011_Computer_Graphics\COMP3011_Computer_Graphics\Assessment1A\Assessment1A\do_not_edit.h(140,9): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 2 拥有了类型“unsigned __int64”
+  (编译源文件“Assessment1A.cpp”)
+      E:\myObj\COMP3011_Computer_Graphics\COMP3011_Computer_Graphics\Assessment1A\Assessment1A\do_not_edit.h(140,9):
+      请考虑在格式字符串中使用“%zd”
+  
+E:\myObj\COMP3011_Computer_Graphics\COMP3011_Computer_Graphics\Assessment1A\Assessment1A\do_not_edit.h(194,87): warning C4244: “=”: 从“float”转换到“char”，可能丢失数据
+  (编译源文件“Assessment1A.cpp”)
+  
+E:\myObj\COMP3011_Computer_Graphics\COMP3011_Computer_Graphics\Assessment1A\Assessment1A\do_not_edit.h(195,87): warning C4244: “=”: 从“float”转换到“char”，可能丢失数据
+  (编译源文件“Assessment1A.cpp”)
+  
+E:\myObj\COMP3011_Computer_Graphics\COMP3011_Computer_Graphics\Assessment1A\Assessment1A\do_not_edit.h(196,87): warning C4244: “=”: 从“float”转换到“char”，可能丢失数据
+  (编译源文件“Assessment1A.cpp”)
+  
+E:\myObj\COMP3011_Computer_Graphics\COMP3011_Computer_Graphics\Assessment1A\Assessment1A\rasterise.h(124,14): warning C4244: “初始化”: 从“float”转换到“int”，可能丢失数据
+  (编译源文件“Assessment1A.cpp”)
+  
+E:\myObj\COMP3011_Computer_Graphics\COMP3011_Computer_Graphics\Assessment1A\Assessment1A\do_not_edit.h(142,1): warning C4715: “obj_parse”: 不是所有的控件路径都返回值
+E:\myObj\COMP3011_Computer_Graphics\COMP3011_Computer_Graphics\Assessment1A\Assessment1A\do_not_edit.h(243,1): warning C4715: “savebitmap”: 不是所有的控件路径都返回值
+  Assessment1A.vcxproj -> E:\myObj\COMP3011_Computer_Graphics\COMP3011_Computer_Graphics\Assessment1A\x64\Debug\Assessment1A.exe
