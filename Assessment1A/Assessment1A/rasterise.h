@@ -76,25 +76,39 @@ void ComputeBarycentricCoordinates(int px, int py, triangle t, float& alpha, flo
 	glm::vec2 b(t.v2.pos.x, t.v2.pos.y);
 	glm::vec2 c(t.v3.pos.x, t.v3.pos.y);
 
-	glm::vec2 ab = b - a;
-	glm::vec2 ac = c - a;
-	glm::vec2 ap = p - a;
+	float line_bcp = (c.y - b.y) * p.x + (b.x - c.x) * p.y + c.x * b.y - b.x * c.y;
+	float line_bca = (c.y - b.y) * a.x + (b.x - c.x) * a.y + c.x * b.y - b.x * c.y;
+	float line_acp = (c.y - a.y) * p.x + (a.x - c.x) * p.y + c.x * a.y - a.x * c.y;
+	float line_acb = (c.y - a.y) * b.x + (a.x - c.x) * b.y + c.x * a.y - a.x * c.y;
+	float line_abp = (b.y - a.y) * p.x + (a.x - b.x) * p.y + b.x * a.y - a.x * b.y;
+	float line_abc = (b.y - a.y) * c.x + (a.x - b.x) * c.y + b.x * a.y - a.x * b.y;
 
-	//float area_abc = 0.5f * abs((b.x - a.x) * (c.y - a.y) - (c.x - a.x) * (b.y - a.y));
-	float area_abc = ab.x * ac.y - ab.y * ac.x;
-	float inv_area_abc = 1.0f / area_abc;
-	//float area_bcp = 0.5f * abs((b.x - p.x) * (c.y - p.y) - (c.x - p.x) * (b.y - p.y));
-	//float area_acp = 0.5f * abs((p.x - a.x) * (c.y - a.y) - (c.x - a.x) * (p.y - a.y));
-	//float area_abp = 0.5f * abs((b.x - a.x) * (p.y - a.y) - (p.x - a.x) * (b.y - a.y));
+	float line_bca_inv = 1.0f / line_bca;
+	float line_acb_inv = 1.0f / line_acb;
+	float line_abc_inv = 1.0f / line_abc;
 
-	// beta = (ap x ac) / (ab x ac)
-	beta = (ap.x * ac.y - ap.y * ac.x) * inv_area_abc;
-	// gamma = (ap x ab) / (ab x ac)
-	gamma = (ab.x * ap.y - ab.y * ap.x) * inv_area_abc;
-	alpha = 1.0f - beta - gamma;
-	//alpha = area_bcp / area_abc;
-	//beta = area_acp / area_abc;
-	//gamma = area_abp / area_abc;
+	alpha = line_bcp * line_bca_inv;
+	beta = line_acp * line_acb_inv;
+	gamma = line_abp * line_abc_inv;
+	//glm::vec2 ab = b - a;
+	//glm::vec2 ac = c - a;
+	//glm::vec2 ap = p - a;
+
+	////float area_abc = 0.5f * abs((b.x - a.x) * (c.y - a.y) - (c.x - a.x) * (b.y - a.y));
+	//float area_abc = ab.x * ac.y - ab.y * ac.x;
+	//float inv_area_abc = 1.0f / area_abc;
+	////float area_bcp = 0.5f * abs((b.x - p.x) * (c.y - p.y) - (c.x - p.x) * (b.y - p.y));
+	////float area_acp = 0.5f * abs((p.x - a.x) * (c.y - a.y) - (c.x - a.x) * (p.y - a.y));
+	////float area_abp = 0.5f * abs((b.x - a.x) * (p.y - a.y) - (p.x - a.x) * (b.y - a.y));
+
+	//// beta = (ap x ac) / (ab x ac)
+	//beta = (ap.x * ac.y - ap.y * ac.x) * inv_area_abc;
+	//// gamma = (ap x ab) / (ab x ac)
+	//gamma = (ab.x * ap.y - ab.y * ap.x) * inv_area_abc;
+	//alpha = 1.0f - beta - gamma;
+	////alpha = area_bcp / area_abc;
+	////beta = area_acp / area_abc;
+	////gamma = area_abp / area_abc;
 }
 
 // Interpolate vertex color and depth by using barycentric coordinates.
@@ -106,25 +120,15 @@ void ShadeFragment(triangle tri, float& alpha, float& beta, float& gamma, glm::v
 
 void Rasterise(vector<triangle> tris)
 {
-	for (auto& tri : tris)
+	for (int py = 0; py < PIXEL_H; py++)
 	{
-		glm::vec3 v0(tri.v1.pos.x, tri.v1.pos.y, tri.v1.pos.z);
-		glm::vec3 v1(tri.v2.pos.x, tri.v2.pos.y, tri.v2.pos.z);
-		glm::vec3 v2(tri.v3.pos.x, tri.v3.pos.y, tri.v3.pos.z);
+		float percf = (float)py / (float)PIXEL_H;
+		int perci = percf * 100;
+		std::clog << "\rScanlines done: " << perci << "%" << ' ' << std::flush;
 
-		// bounding box
-		int minX = std::max(0, (int)std::floor(std::min({ v0.x, v1.x, v2.x })));
-		int maxX = std::min(PIXEL_W - 1, (int)std::ceil(std::max({ v0.x, v1.x, v2.x })));
-		int minY = std::max(0, (int)std::floor(std::min({ v0.y, v1.y, v2.y })));
-		int maxY = std::min(PIXEL_H - 1, (int)std::ceil(std::max({ v0.y, v1.y, v2.y })));
-
-		for (int py = minY; py <= maxY; py++)
+		for (int px = 0; px <= PIXEL_W; px++)
 		{
-			float percf = (float)py / (float)PIXEL_H;
-			int perci = percf * 100;
-			std::clog << "\rScanlines done: " << perci << "%" << ' ' << std::flush;
-
-			for (int px = minX; px <= maxX; px++)
+			for (auto& tri : tris)
 			{
 				float alpha, beta, gamma;
 				ComputeBarycentricCoordinates(px, py, tri, alpha, beta, gamma);
@@ -148,6 +152,7 @@ void Rasterise(vector<triangle> tris)
 			}
 		}
 	}
+	
 	std::clog << "\rFinish rendering.           \n";
 }
 

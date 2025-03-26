@@ -20,9 +20,9 @@ E:\myObj\COMP3011_Computer_Graphics\COMP3011_Computer_Graphics\Assessment1A\Asse
 E:\myObj\COMP3011_Computer_Graphics\COMP3011_Computer_Graphics\Assessment1A\Assessment1A\do_not_edit.h(196,87): warning C4244: “=”: 从“float”转换到“char”，可能丢失数据
   (编译源文件“Assessment1A.cpp”)
   
-E:\myObj\COMP3011_Computer_Graphics\COMP3011_Computer_Graphics\Assessment1A\Assessment1A\rasterise.h(124,14): warning C4244: “初始化”: 从“float”转换到“int”，可能丢失数据
+E:\myObj\COMP3011_Computer_Graphics\COMP3011_Computer_Graphics\Assessment1A\Assessment1A\rasterise.h(127,13): warning C4244: “初始化”: 从“float”转换到“int”，可能丢失数据
   (编译源文件“Assessment1A.cpp”)
   
-E:\myObj\COMP3011_Computer_Graphics\COMP3011_Computer_Graphics\Assessment1A\Assessment1A\do_not_edit.h(142,1): warning C4715: “obj_parse”: 不是所有的控件路径都返回值
 E:\myObj\COMP3011_Computer_Graphics\COMP3011_Computer_Graphics\Assessment1A\Assessment1A\do_not_edit.h(243,1): warning C4715: “savebitmap”: 不是所有的控件路径都返回值
+E:\myObj\COMP3011_Computer_Graphics\COMP3011_Computer_Graphics\Assessment1A\Assessment1A\do_not_edit.h(142,1): warning C4715: “obj_parse”: 不是所有的控件路径都返回值
   Assessment1A.vcxproj -> E:\myObj\COMP3011_Computer_Graphics\COMP3011_Computer_Graphics\Assessment1A\x64\Debug\Assessment1A.exe

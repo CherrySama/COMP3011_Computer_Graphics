@@ -10,8 +10,10 @@ glm::vec3 DoNothing(triangle* tri, int depth, glm::vec3 p, glm::vec3 dir)
 glm::vec3 Shade(triangle* tri, int depth, glm::vec3 p, glm::vec3 dir)
 {
     vec3 col = vec3(0);
-	vec3 surface_col = tri->v1.col; 
-	vec3 n = normalize(tri->v1.nor); 
+	vec3 surface_col = tri->v1.col;
+	vec3 n = normalize(tri->v1.nor);
+	//vec3 surface_col = (tri->v1.col + tri->v2.col + tri->v3.col) * 0.33f;
+	//vec3 n = normalize((tri->v1.nor + tri->v2.nor + tri->v3.nor) * 0.33f);
 
 	// ambient
 	float ambient = 0.1f;
@@ -72,40 +74,26 @@ float RayTriangleIntersection(glm::vec3 o, glm::vec3 dir, triangle* tri, glm::ve
 	glm::vec3 v1 = tri->v2.pos;
 	glm::vec3 v2 = tri->v3.pos;
 
-	// Edge vectors
-	glm::vec3 E1 = v1 - v0;
-	glm::vec3 E2 = v2 - v0;
-	// Vector from vertex to ray origin
-	glm::vec3 S = o - v0;
-	glm::vec3 S1 = glm::cross(dir, E2);
-	glm::vec3 S2 = glm::cross(S, E1);
+	glm::vec3 v0v1 = v1 - v0;
+	glm::vec3 v0v2 = v2 - v0;
+	glm::vec3 N = glm::normalize(glm::cross(v0v1, v0v2));
 
-	float S1E1 = glm::dot(S1, E1);
-	float S1E1_inv = 1.0f / S1E1;
+	float dN = glm::dot(dir, N);
 	// check whether the ray is parallel to the triangle
-	if (abs(S1E1) < 1e-6f)
+	if (std::abs(dN) < 1e-6f)
 		return FLT_MAX;
 
-	//// Calculate u coordinate
-	//float u = dot(S, S1) * S1E1_inv;
-	//if (u < 0.0f || u > 1.0f)
-	//	return FLT_MAX;
-
-	//// Calculate v coordinate
-	//float v = dot(dir, S2) * S1E1_inv;
-	//if (v < 0.0f || u + v > 1.0f)
-	//	return FLT_MAX;
-
-	// Calculate intersection distance
-	float t = dot(E2, S2) * S1E1_inv;
-	if (t < 1e-6f)
+	float dN_inv = 1.0f / dN;
+	float t = glm::dot(v0 - o, N) * dN_inv;
+	// check whether the intersection point is behind the orig of the light
+	if (t < 1e-6f)  
 		return FLT_MAX;
 
 	point = o + t * dir;
 	if (PointInTriangle(point, v0, v1, v2))
 		return t;
 
-    return FLT_MAX;
+	return FLT_MAX;
 }
 
 void trace(glm::vec3 o, glm::vec3 dir, float& t, glm::vec3& io_col, int depth, closest_hit p_hit)
