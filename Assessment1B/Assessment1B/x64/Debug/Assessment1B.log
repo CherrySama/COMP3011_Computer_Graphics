@@ -20,13 +20,13 @@ E:\myObj\COMP3011_Computer_Graphics\COMP3011_Computer_Graphics\Assessment1B\Asse
 E:\myObj\COMP3011_Computer_Graphics\COMP3011_Computer_Graphics\Assessment1B\Assessment1B\do_not_edit.h(162,87): warning C4244: “=”: 从“float”转换到“char”，可能丢失数据
   (编译源文件“Assessment1B.cpp”)
   
-E:\myObj\COMP3011_Computer_Graphics\COMP3011_Computer_Graphics\Assessment1B\Assessment1B\raytrace.h(146,19): warning C4244: “初始化”: 从“float”转换到“int”，可能丢失数据
+E:\myObj\COMP3011_Computer_Graphics\COMP3011_Computer_Graphics\Assessment1B\Assessment1B\raytrace.h(147,19): warning C4244: “初始化”: 从“float”转换到“int”，可能丢失数据
   (编译源文件“Assessment1B.cpp”)
   
-E:\myObj\COMP3011_Computer_Graphics\COMP3011_Computer_Graphics\Assessment1B\Assessment1B\raytrace.h(151,40): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+E:\myObj\COMP3011_Computer_Graphics\COMP3011_Computer_Graphics\Assessment1B\Assessment1B\raytrace.h(152,40): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
   (编译源文件“Assessment1B.cpp”)
   
-E:\myObj\COMP3011_Computer_Graphics\COMP3011_Computer_Graphics\Assessment1B\Assessment1B\raytrace.h(151,31): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+E:\myObj\COMP3011_Computer_Graphics\COMP3011_Computer_Graphics\Assessment1B\Assessment1B\raytrace.h(152,31): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
   (编译源文件“Assessment1B.cpp”)
   
 E:\myObj\COMP3011_Computer_Graphics\COMP3011_Computer_Graphics\Assessment1B\Assessment1B\do_not_edit.h(150,1): warning C4715: “obj_parse”: 不是所有的控件路径都返回值
