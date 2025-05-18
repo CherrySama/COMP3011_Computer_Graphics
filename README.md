@@ -9,4 +9,4 @@
 
 ## Assessment1B
 
-![img](E:\myObj\COMP3011_Computer_Graphics\COMP3011_Computer_Graphics\README.assets\render1B.bmp)
+<img src="README.assets\render1B.bmp" alt="img" style="zoom:50%;" />
